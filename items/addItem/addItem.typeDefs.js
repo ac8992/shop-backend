@@ -5,9 +5,9 @@ export default gql`
         addItem(
             itemCode: String!,
             itemName: String!,
-            price: Int!,
-            color: String!,
-            size: String!,
+            price: String!,
+            color: [String]!,
+            size: [String]!,
             category: String!,
             thum: String,
             photo: String

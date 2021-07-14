@@ -44,7 +44,10 @@ export default {
                         ok: true,
                     }
                 } else {
-                    return null;
+                    return {
+                        ok: false,
+                        error: "접근 권한이 없습니다."
+                    };
                 }
             } catch (e) {
                 return {

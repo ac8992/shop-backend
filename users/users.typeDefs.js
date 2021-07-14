@@ -11,7 +11,7 @@ export default gql`
         createdAt:String!
         updatedAt:String!
         auth: Int!
-        # cart: [Cart]
+        cart: Cart!
         # isMe: Boolean!
     }
     type Query {

@@ -1,5 +1,5 @@
 // This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// learn more about it in the docs https//pris.ly/d/prisma-schema
 
 datasource db {
   provider = "postgresql"
@@ -27,22 +27,49 @@ model Item {
   id Int @id @default(autoincrement())
   itemCode String @unique
   itemName String
-  price Int
-  color String
-  size String
+  price String
+  color String[]
+  size String[]
   category String
   thum String?
   photo String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  // cart Cart[]
   // ItemDetail ItemDetail[]
 }
 
 // model ItemDetail{
 //   id Int @id @default(autoincrement())
-//   item Item @relation(fields: [itemId], references: [id])
+//   item Item @relation(fields [itemId], references [id])
 //   itemId Int
 //   photo String
 //   createdAt DateTime @default(now())
 //   updatedAt DateTime @updatedAt
 // }
+
+model Order {
+  id Int @id @default(autoincrement())
+  itemCode String
+  itemName String
+  price String
+  color String
+  size String
+  userId String
+  orderCode String 
+  orderState String @default("상품준비중")
+  payType String @default("무통장입금")
+  thum String?
+  createdAt DateTime @default(now())
+}
+
+model Cart {
+  id Int @id @default(autoincrement())
+  userId String
+  itemCode String
+  itemName String
+  price String
+  color String
+  size String
+  thum String?
+}

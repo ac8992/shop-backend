@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE "Item" ALTER COLUMN "photo" DROP NOT NULL,
-ALTER COLUMN "thum" DROP NOT NULL;

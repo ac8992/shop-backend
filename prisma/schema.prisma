@@ -21,6 +21,9 @@ generator client {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   auth Int @default(2)
+  bookmark Item[]
+  review Review[]
+  itemAsk ItemAsk[]
 }
 
 model Item {
@@ -35,7 +38,9 @@ model Item {
   photo String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  // cart Cart[]
+  bookmark User[]
+  review Review[]
+  itemAsk ItemAsk[]
   // ItemDetail ItemDetail[]
 }
 
@@ -61,6 +66,7 @@ model Order {
   payType String @default("무통장입금")
   thum String?
   createdAt DateTime @default(now())
+  etc String?
 }
 
 model Cart {
@@ -72,4 +78,38 @@ model Cart {
   color String
   size String
   thum String?
+}
+
+model Notice {
+  id Int @id @default(autoincrement())
+  title String
+  noticeText String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Review {
+  id Int @id @default(autoincrement())
+  item Item @relation(fields: [itemId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+  title String
+  payload String
+  grade Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  itemId Int
+  userId Int
+}
+
+model ItemAsk {
+  id Int @id @default(autoincrement())
+  item Item @relation(fields: [itemId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+  title String
+  payload String
+  onlyMe Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  itemId Int
+  userId Int
 }

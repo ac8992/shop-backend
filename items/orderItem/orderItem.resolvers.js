@@ -4,7 +4,7 @@ import dateformat from "dateformat";
 
 export default {
     Mutation: {
-        orderItem: protectedResolver(async (_, { itemCode, itemName, price, color, size }, { loggedInUser }) => {
+        orderItem: protectedResolver(async (_, { itemCode, itemName, price, color, size, etc }, { loggedInUser }) => {
             const item = await client.item.findUnique({
                 where:{
                     itemCode
@@ -31,6 +31,7 @@ export default {
                     orderCode,
                     // payType,
                     thum: item.thum,
+                    etc
                 }
             })
             return {

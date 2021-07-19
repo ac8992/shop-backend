@@ -5,9 +5,9 @@ import dotenv from "dotenv";
 
 export default {
     Mutation: {
-        login: async (_, {username, password}) => {
-            const user = await client.user.findFirst({where: {
-                        username
+        login: async (_, {userId, password}) => {
+            const user = await client.user.findUnique({where: {
+                        userId
                     }})
             if (!user) {
                 return {ok: false, error: "등록되지 않은 사용자 입니다."};

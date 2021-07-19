@@ -11,6 +11,9 @@ export default gql`
         category: String!
         thum: String
         photo: String
+        review: Review
+        createdAt: String!
+        updatedAt: String!
     }
 
     type Order {
@@ -25,6 +28,8 @@ export default gql`
         orderState: String!
         payType: String!
         thum: String
+        etc: String
+        createdAt: String!
     }
 
     type Cart {
@@ -36,6 +41,26 @@ export default gql`
         color: String!
         size: String!
         thum: String
+    }
+
+    type Review {
+        id: Int!
+        item: Item!
+        title: String
+        payload: String!
+        grade: Int!
+        createdAt: String!
+        updatedAt: String!
+    }
+
+    type ItemAsk {
+        id: Int!
+        item: Item!
+        title: String
+        payload: String!
+        onlyMe: Boolean
+        createdAt: String!
+        updatedAt: String!
     }
 `;
 
